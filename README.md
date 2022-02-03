@@ -1,3 +1,3 @@
-### Pipeline Maven Project
+### CI/CD Pipeline Maven Project
 
-Spring Boot Application
+Simple spring Boot Application with Jenkins CI/CD pipeline 
