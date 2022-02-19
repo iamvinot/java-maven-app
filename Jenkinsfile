@@ -1,20 +1,42 @@
+def gv
+
 pipeline{
     agent any
     stages{
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage('Git clone'){
             steps{
-                git 'https://github.com/iamvinot/maven-project.git'
+                git 'https://github.com/iamvinot/java-project.git'
             }
         }
-        
-        stage('maven build'){
-            steps{
-                sh 'mvn package'
+        stage("build jar") {
+            steps {
+                script {
+                    echo "building jar"
+                    //gv.buildJar()
+                }
             }
         }
-        stage('Create Dockerimage'){
-            steps{
-                sh 'docker build -t vinothmohan/springboot:latest .'
+        stage("build image") {
+            steps {
+                script {
+                    echo "building image"
+                    //gv.buildImage()
+                }
+            }
+        }
+        stage("deploy") {
+            steps {
+                script {
+                    echo "deploying"
+                    //gv.deployApp()
+                }
             }
         }
         
